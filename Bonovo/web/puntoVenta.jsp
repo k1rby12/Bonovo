@@ -12,49 +12,56 @@
     ResultSet rs = stmt.executeQuery("SELECT * FROM punto_venta");
 %>
 
-<div class="container text-center">
-    <h2>Punto de Venta</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Total</th>
-                <th>Fecha Venta</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                while (rs.next()) {
-            %>
+<div class="container px-0 px-sm-3">
+    <h2 class="mb-4 text-center">Punto de Venta</h2>
+    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        <table class="table table-striped table-bordered table-hover mb-4" style="min-width: 900px;">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="min-width: 50px;">ID</th>
+                    <th style="min-width: 150px;">Producto</th>
+                    <th style="min-width: 80px;">Cantidad</th>
+                    <th style="min-width: 100px;">Precio Unitario</th>
+                    <th style="min-width: 100px;">Total</th>
+                    <th style="min-width: 120px;">Fecha Venta</th>
+                    <th style="min-width: 130px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% while (rs.next()) { %>
                 <tr>
                     <td><%= rs.getInt("id") %></td>
-                    <td><%= rs.getString("producto") %></td>
+                    <td class="text-truncate"><%= rs.getString("producto") %></td>
                     <td><%= rs.getInt("cantidad") %></td>
-                    <td><%= rs.getDouble("precio_unitario") %></td>
-                    <td><%= rs.getDouble("total") %></td>
-                    <td><%= rs.getDate("fecha_venta") %></td>
+                    <td>$<%= String.format("%.2f", rs.getDouble("precio_unitario")) %></td>
+                    <td>$<%= String.format("%.2f", rs.getDouble("total")) %></td>
+                    <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("fecha_venta")) %></td>
                     <td>
-                        <a href="editar_pv.jsp?id=<%= rs.getInt("id") %>" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="eliminar_pv.jsp?id=<%= rs.getInt("id") %>" 
-                           onclick="return confirm('¿Seguro que deseas eliminar este registro?');" 
-                           class="btn btn-danger btn-sm">Eliminar</a>
+                        <div class="d-flex flex-nowrap gap-2">
+                            <a href="editar_pv.jsp?id=<%= rs.getInt("id") %>" class="btn btn-primary btn-sm px-3">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a href="eliminar_pv.jsp?id=<%= rs.getInt("id") %>" 
+                               onclick="return confirm('¿Seguro que deseas eliminar este registro?');" 
+                               class="btn btn-primary btn-sm px-3">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </a>
+                        </div>
                     </td>
                 </tr>
-            <%
-                }
-                rs.close();
-                stmt.close();
-            %>
-        </tbody>
-    </table>
-        <a href="editar_pv.jsp" class="btn btn-primary mb-3">Nuevo Registro</a>
-        <div class="container mt-3">
-    <a href="index.jsp" class="btn btn-primary">Salir</a>
-</div>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+        <a href="editar_pv.jsp" class="btn btn-primary mb-3 mb-sm-0" style="min-width: 140px;">
+            <i class="fas fa-plus"></i> Nuevo Registro
+        </a>
+        <a href="index.jsp" class="btn btn-primary" style="min-width: 100px;">
+            <i class="fas fa-sign-out-alt"></i> Salir
+        </a>
+    </div>
 </div>
 
 

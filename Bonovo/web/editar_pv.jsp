@@ -31,31 +31,40 @@
         ps.close();
     }
 %>
-<div class="container mt-4">
-    <h2><%= (id != null && !id.isEmpty()) ? "Editar Registro Punto de Venta" : "Nuevo Registro Punto de Venta" %></h2>
+<div class="container">
+    <h2 class="text-center"><%= (id == null || id.isEmpty()) ? "Nuevo Registro Punto de Venta" : "Editar Registro Punto de Venta" %></h2>
+    <br>
     <form action="guardarPuntoVenta.jsp" method="post">
-        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>">
+        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>" />
+        
         <div class="mb-3">
             <label>Producto:</label>
-            <input type="text" name="producto" value="<%= producto %>" class="form-control" required>
+            <input type="text" name="producto" class="form-control" value="<%= producto %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Cantidad:</label>
-            <input type="number" name="cantidad" value="<%= cantidad %>" class="form-control" required>
+            <input type="number" name="cantidad" class="form-control" value="<%= cantidad %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Precio Unitario:</label>
-            <input type="number" step="0.01" name="precio_unitario" value="<%= precioUnitario %>" class="form-control" required>
+            <input type="number" step="0.01" name="precio_unitario" class="form-control" value="<%= precioUnitario %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Fecha de Venta:</label>
-            <input type="date" name="fecha_venta" value="<%= (fechaVenta != null ? fechaVenta.toString() : "") %>" class="form-control" required>
+            <input type="date" name="fecha_venta" class="form-control" value="<%= (fechaVenta != null ? fechaVenta.toString() : "") %>" required />
         </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        
+        <div class="container mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button> 
+        </div>
     </form>
-        <div class="container mt-3">
-    <a href="puntoVenta.jsp" class="btn btn-primary">Regresar</a>
-</div>
+    
+    <div class="container mt-3 text-center"> 
+        <a href="puntoVenta.jsp" class="btn btn-primary">Regresar</a> 
+    </div>
 </div>
 
 <jsp:include page ="includes/footer.jsp"/>

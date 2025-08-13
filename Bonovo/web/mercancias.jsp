@@ -15,47 +15,54 @@
     ResultSet rs = stmt.executeQuery("SELECT * FROM inventarios");
 %>
 
-<div class="container text-center">
-    <h2>Mercancías</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                while (rs.next()) {
-            %>
+<div class="container px-0 px-sm-3">
+    <h2 class="mb-4 text-center">Mercancías</h2>
+    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        <table class="table table-striped table-bordered table-hover mb-4" style="min-width: 800px;">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="min-width: 50px;">ID</th>
+                    <th style="min-width: 120px;">Nombre</th>
+                    <th style="min-width: 150px;">Descripción</th>
+                    <th style="min-width: 100px;">Cantidad</th>
+                    <th style="min-width: 100px;">Precio</th>
+                    <th style="min-width: 130px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% while (rs.next()) { %>
                 <tr>
                     <td><%= rs.getInt("id") %></td>
-                    <td><%= rs.getString("nombre") %></td>
-                    <td><%= rs.getString("descripcion") %></td>
+                    <td class="text-truncate"><%= rs.getString("nombre") %></td>
+                    <td class="text-truncate"><%= rs.getString("descripcion") %></td>
                     <td><%= rs.getInt("cantidad") %></td>
-                    <td><%= rs.getDouble("precio") %></td>
+                    <td>$<%= String.format("%.2f", rs.getDouble("precio")) %></td>
                     <td>
-                        <a href="editarMercancia.jsp?id=<%= rs.getInt("id") %>" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="eliminarMercancia.jsp?id=<%= rs.getInt("id") %>" 
-                           onclick="return confirm('¿Seguro que deseas eliminar esta mercancía?');" 
-                           class="btn btn-primary btn-sm">Eliminar</a>
+                        <div class="d-flex flex-nowrap gap-2">
+                            <a href="editarMercancia.jsp?id=<%= rs.getInt("id") %>" class="btn btn-primary btn-sm px-3">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a href="eliminarMercancia.jsp?id=<%= rs.getInt("id") %>" 
+                               onclick="return confirm('¿Seguro que deseas eliminar esta mercancía?');" 
+                               class="btn btn-primary btn-sm px-3">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </a>
+                        </div>
                     </td>
                 </tr>
-            <%
-                }
-                rs.close();
-                stmt.close();
-            %>
-        </tbody>
-    </table>
-        <a href="editarMercancia.jsp" class="btn btn-primary mb-3">Nueva Mercancía</a>
-        <div class="container mt-3">
-    <a href="index.jsp" class="btn btn-primary">Salir</a>
-</div>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+        <a href="editarMercancia.jsp" class="btn btn-primary mb-3 mb-sm-0" style="min-width: 140px;">
+            <i class="fas fa-plus"></i> Nueva Mercancía
+        </a>
+        <a href="index.jsp" class="btn btn-primary" style="min-width: 100px;">
+            <i class="fas fa-sign-out-alt"></i> Salir
+        </a>
+    </div>
 </div>
 
 <jsp:include page ="includes/footer.jsp"/>

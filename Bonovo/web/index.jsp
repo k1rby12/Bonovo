@@ -52,25 +52,26 @@
     </style>
 </head>
 <body>
-<div class="container mt-5">
-    <div class="login-container mx-auto" style="max-width: 400px;">
-        <h3 class="mb-4 text-center">Iniciar sesión</h3>
-        <% if (!mensaje.isEmpty()) { %>
-            <div class="alert alert-danger"><%= mensaje %></div>
-        <% } %>
-        <form method="post" action="index.jsp">
-            <div class="mb-3">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" id="usuario" name="usuario" class="form-control" required autofocus />
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-control" required />
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
-        </form>
+    <div class="container mt-5">
+        <div class="login-container mx-auto" style="max-width: 400px;">
+            <h3 class="mb-4 text-center">Iniciar sesión</h3>
+            <% if (!mensaje.isEmpty()) { %>
+                <div class="alert alert-danger"><%= mensaje %></div>
+            <% } %>
+            <form method="post" action="index.jsp">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" class="form-control" required autofocus />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

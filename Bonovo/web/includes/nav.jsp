@@ -5,15 +5,13 @@
 --%>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: cornflowerblue;">
-    
   <div class="container-fluid">
-    <a class="navbar-brand" href="cliente.jsp">Bonovo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="index.jsp">Bonovo</a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav w-100 justify-content-center">
         <li class="nav-item"><a class="nav-link" href="cliente.jsp">Clientes</a></li>
         <li class="nav-item"><a class="nav-link" href="proveedores.jsp">Proveedores</a></li>
         <li class="nav-item"><a class="nav-link" href="mercancias.jsp">Mercancías</a></li>
@@ -23,4 +21,4 @@
     </div>
   </div>
 </nav>
-
+<br>

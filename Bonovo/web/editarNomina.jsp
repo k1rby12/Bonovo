@@ -28,35 +28,45 @@
         ps.close();
     }
 %>
-<div class="container mt-4">
-    <h2><%= (id != null && !id.isEmpty()) ? "Editar Nómina" : "Nuevo Registro" %></h2>
+<div class="container">
+    <h2 class="text-center"><%= (id == null || id.isEmpty()) ? "Nuevo Registro" : "Editar Nómina" %></h2>
+    
     <form action="guardarNomina.jsp" method="post">
-        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>">
+        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>" />
+        
         <div class="mb-3">
             <label>Empleado:</label>
-            <input type="text" name="empleado" value="<%= empleado %>" class="form-control" required>
+            <input type="text" name="empleado" class="form-control" value="<%= empleado %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Puesto:</label>
-            <input type="text" name="puesto" value="<%= puesto %>" class="form-control" required>
+            <input type="text" name="puesto" class="form-control" value="<%= puesto %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Salario Base:</label>
-            <input type="number" step="0.01" name="salario_base" value="<%= salarioBase %>" class="form-control" required>
+            <input type="number" step="0.01" name="salario_base" class="form-control" value="<%= salarioBase %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Bonos:</label>
-            <input type="number" step="0.01" name="bonos" value="<%= bonos %>" class="form-control">
+            <input type="number" step="0.01" name="bonos" class="form-control" value="<%= bonos %>" />
         </div>
+        
         <div class="mb-3">
             <label>Deducciones:</label>
-            <input type="number" step="0.01" name="deducciones" value="<%= deducciones %>" class="form-control">
+            <input type="number" step="0.01" name="deducciones" class="form-control" value="<%= deducciones %>" />
         </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        
+        <div class="container mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button> 
+        </div>
     </form>
-        <div class="container mt-3">
-    <a href="nomina.jsp" class="btn btn-primary">Regresar</a>
-</div>
+    
+    <div class="container mt-3 text-center"> 
+        <a href="nomina.jsp" class="btn btn-primary">Regresar</a> 
+    </div>
 </div>
 
 <jsp:include page ="includes/footer.jsp"/>

@@ -27,30 +27,40 @@
         ps.close();
     }
 %>
-<div class="container mt-4">
-    <h2><%= (id != null && !id.isEmpty()) ? "Editar Mercancía" : "Nueva Mercancía" %></h2>
+<div class="container">
+    <h2 class="text-center"><%= (id == null || id.isEmpty()) ? "Nueva Mercancía" : "Editar Mercancía" %></h2>
+    
     <form action="guardarMercancia.jsp" method="post">
-        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>">
+        <input type="hidden" name="id" value="<%= (id != null ? id : 0) %>" />
+        
         <div class="mb-3">
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="<%= nombre %>" class="form-control" required>
+            <input type="text" name="nombre" class="form-control" value="<%= nombre %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Descripción:</label>
             <textarea name="descripcion" class="form-control" required><%= descripcion %></textarea>
         </div>
+        
         <div class="mb-3">
             <label>Cantidad:</label>
-            <input type="number" name="cantidad" value="<%= cantidad %>" class="form-control" required>
+            <input type="number" name="cantidad" class="form-control" value="<%= cantidad %>" required />
         </div>
+        
         <div class="mb-3">
             <label>Precio:</label>
-            <input type="number" step="0.01" name="precio" value="<%= precio %>" class="form-control" required>
+            <input type="number" step="0.01" name="precio" class="form-control" value="<%= precio %>" required />
         </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        
+        <div class="container mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button> 
+        </div>
     </form>
-        <div class="container mt-3">
-    <a href="mercancias.jsp" class="btn btn-primary">Regresar</a>
+    
+    <div class="container mt-3 text-center"> 
+        <a href="mercancias.jsp" class="btn btn-primary">Regresar</a> 
+    </div>
 </div>
-</div>
+
 <jsp:include page ="includes/footer.jsp"/>
