@@ -14,7 +14,7 @@
     String email = request.getParameter("email");
 
     if(idStr == null || idStr.equals("0") || idStr.isEmpty()) {
-        // Insertar nuevo cliente
+
         PreparedStatement ps = conexion.prepareStatement("INSERT INTO clientes(nombre, direccion, telefono, email) VALUES (?, ?, ?, ?)");
         ps.setString(1, nombre);
         ps.setString(2, direccion);

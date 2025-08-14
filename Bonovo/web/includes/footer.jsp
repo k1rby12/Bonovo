@@ -3,8 +3,8 @@
     Created on : 11/08/2025, 07:49:15 PM
     Author     : irvin
 --%>
-
-<footer class="bg-light text-center text-lg-start mt-auto py-3">
+<br>
+<footer class=" text-center text-lg-start mt-auto py-3" style="background-color: cornflowerblue;">
   <div class="container">
     <div class="small text-muted mb-2">
       NOMBRE: Irving Velazquez Sandoval<br>

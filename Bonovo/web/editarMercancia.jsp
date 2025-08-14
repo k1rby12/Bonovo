@@ -44,9 +44,39 @@
         </div>
         
         <div class="mb-3">
-            <label>Cantidad:</label>
-            <input type="number" name="cantidad" class="form-control" value="<%= cantidad %>" required />
-        </div>
+    <label>Cantidad:</label>
+    <div class="input-group">
+        <select name="cantidad" id="cantidadSelect" class="form-select" onchange="checkCustomOption()">
+            <option value="1" <%= cantidad == 1 ? "selected" : "" %>>1</option>
+            <option value="5" <%= cantidad == 5 ? "selected" : "" %>>5</option>
+            <option value="10" <%= cantidad == 10 ? "selected" : "" %>>10</option>
+            <option value="25" <%= cantidad == 25 ? "selected" : "" %>>25</option>
+            <option value="50" <%= cantidad == 50 ? "selected" : "" %>>50</option>
+            <option value="custom">Otra cantidad</option>
+        </select>
+        <input type="number" name="cantidad_custom" id="cantidadCustom" 
+               class="form-control d-none" value="<%= cantidad %>"
+               min="1" oninput="updateCustomValue()">
+    </div>
+</div>
+               <script>
+                   function checkCustomOption() {
+                       const select = document.getElementById('cantidadSelect');
+                       const customInput = document.getElementById('cantidadCustom');
+                       if(select.value === 'custom') {
+                           customInput.classList.remove('d-none');
+                           customInput.focus();
+                       } else 
+                       {
+                           customInput.classList.add('d-none');
+                       }
+                   }
+                   
+    function updateCustomValue() 
+    {
+        document.getElementById('cantidadSelect').value = 'custom';
+    }
+           </script>
         
         <div class="mb-3">
             <label>Precio:</label>
